@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数据与对象</title>
+		<script src="../vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{ message }}
+		</div>
+		<script>
+			var data = { message : 1}
+			var vm = new Vue({
+				el:"#app",
+				data:data
+			});
+			
+			//使用watch方法监听数据的改变，必须放在变化前，要不然无法监听
+			vm.$watch('message',function(newV,oldV){
+				console.log(oldV,newV)
+			})
+			
+			//体验响应式,使用vm和data都可以
+			//如果想要一个变量被响应式，必须初始化变量
+			vm.message = 3;
+			data.message = 5;
+			
+		
+			
+			//控制台查看返回结果是true
+			console.log(vm.message == data.message)
+			
+			
+		</script>
+	</body>
+</html>
