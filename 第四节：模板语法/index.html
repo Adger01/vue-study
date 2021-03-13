@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模板语法</title>
+		<script src="../vue.js"></script>
+		
+	</head>
+	<body>
+		<div id="app" >
+			{{ msg }}
+			<div v-html="vHtml" v-once></div>
+			<div v-bind:class="color">ni hao</div>
+			<p>{{ number +1 }}</p>
+			<p>{{ ok ? "yes":"no" }}</p>
+			<p>{{ 1==1 ? "yes":"no" }}</p>
+			<p>{{ message.split('').reverse().join('') }}</p>
+		</div>
+		
+	<script type="text/javascript">
+		var data = { 
+				msg:"hello",
+				vHtml:'<span style="color:blue">哈哈哈哈</span>',
+				color:'red',
+				number:10,//加法减法
+				ok:false,//三目运算符
+				message:"vue",//操作javescript的表达式
+			}
+		var vm = new Vue({
+			el:"#app",
+			data:data
+		});
+		
+		//模板使用的是muthtouch语法
+		//v-once 代表模板只能被改一次
+		// vm.msg = "hi,vue 1"
+		// vm.msg = "hi,vue 2"
+		
+	</script>
+	<style type="text/css">
+		.red{color: red;}
+	</style>
+	</body>
+</html>
